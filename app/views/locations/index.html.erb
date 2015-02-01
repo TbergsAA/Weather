@@ -1,0 +1,22 @@
+<%= link_to "Add new", new_location_path %>
+</br>
+<table style="width:100%">
+  <tr>
+    <td>Latitude</td>
+    <td>Longitude</td> 
+    <td>Address</td>
+    <td>Actions</td>
+  </tr>
+  <%- @locations.each do |location| %>
+    <tr>
+      <td><%= location.lat %></td>
+      <td><%= location.lng %></td> 
+      <td><%= location.address %></td>
+      <td>
+        <%= link_to "Show", "#"%>
+        <%= link_to "Update", "#"%>
+        <%= link_to "Delete", "#"%>
+      </td>
+    </tr>
+  <% end %>
+</table>

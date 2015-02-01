@@ -1,0 +1,29 @@
+<h1>
+  Get current weather
+</h1>
+<p> <%= link_to "go to index", root_path %> </p>
+
+<%= form_tag( url: '/weather/current' ) do  %>
+
+  <%= label_tag :lat %>
+  <%= text_field_tag :lat %>
+  </br>
+  <%= label_tag :lng %>
+  <%= text_field_tag :lng %>
+  </br>
+  <%= submit_tag "find" %>
+
+<% end %>
+
+<hr>
+
+<%- if @by_coords.present? %>
+  <h1>Current weather by coords</h1>
+  <pre><%= @by_coords %></pre>
+<% end %>
+
+<%- if @by_city.present? %>
+  <h1>Current weather by city</h1>
+  <pre><%= @by_city %></pre>
+<% end %>
+

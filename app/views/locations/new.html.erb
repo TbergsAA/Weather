@@ -1,0 +1,19 @@
+<h1>
+  Get new location
+</h1>
+<% if @location_error.present? %>
+<p><% @location_error %></p>
+<% end %>
+<p> <%= link_to "go to index", root_path %> </p>
+
+<%= form_tag( '/locations/create' ) do  %>
+
+  <%= label_tag :lat %>
+  <%= text_field_tag :lat %>
+  </br>
+  <%= label_tag :lng %>
+  <%= text_field_tag :lng %>
+  </br>
+  <%= submit_tag "create new" %>
+
+<% end %>
