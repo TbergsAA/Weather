@@ -1,5 +1,5 @@
 <h1>
-  Get new location
+  Edit location
 </h1>
 <% if @location_error.present? %>
 <p><% @location_error %></p>
@@ -14,6 +14,6 @@
   <%= f.label :lng %>
   <%= f.text_field :lng %>
   </br>
-  <%= f.submit "save" %>
+  <%= f.submit "update" %>
 
 <% end %>

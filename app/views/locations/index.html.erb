@@ -13,9 +13,9 @@
       <td><%= location.lng %></td> 
       <td><%= location.address %></td>
       <td>
-        <%= link_to "Show", "#"%>
-        <%= link_to "Update", "#"%>
-        <%= link_to "Delete", "#"%>
+        <%= link_to "Show", location_path(location) %>
+        <%= link_to "Update", edit_location_path(location) %>
+        <%= link_to "Delete", location_path(location),method: :delete, data: { confirm: 'Are you sure?' } %>
       </td>
     </tr>
   <% end %>

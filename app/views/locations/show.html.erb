@@ -1,0 +1,15 @@
+<p> <%= link_to "Back to list", action: 'index' %> </p>
+</br>
+<table style="width:100%">
+  <tr>
+    <td>Latitude</td>
+    <td>Longitude</td> 
+    <td>Address</td>
+  </tr>
+    <tr>
+      <td><%= @location.lat %></td>
+      <td><%= @location.lng %></td> 
+      <td><%= @location.address %></td>
+      </td>
+    </tr>
+</table>

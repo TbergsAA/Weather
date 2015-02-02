@@ -3,16 +3,16 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'weather#index'
+  root 'locations#index'
 
 
   # Example of regular route:
   get 'weather/current', :to => 'weather#current'
   post 'weather/current', :to => 'weather#current'
 
-  post 'locations/create', :to => 'locations#create'
 
   resources :locations
+
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

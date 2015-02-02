@@ -3,16 +3,14 @@
 </h1>
 <p> <%= link_to "go to index", root_path %> </p>
 
-<%= form_tag( url: '/weather/current' ) do  %>
-
-  <%= label_tag :lat %>
-  <%= text_field_tag :lat %>
+<%= form_for @location do |f| %>
+  <%= f.label :lat %>
+  <%= f.text_field :lat %>
   </br>
-  <%= label_tag :lng %>
-  <%= text_field_tag :lng %>
+  <%= f.label :lng %>
+  <%= f.text_field :lng %>
   </br>
-  <%= submit_tag "find" %>
-
+  <%= f.submit "find" %>
 <% end %>
 
 <hr>
@@ -21,9 +19,3 @@
   <h1>Current weather by coords</h1>
   <pre><%= @by_coords %></pre>
 <% end %>
-
-<%- if @by_city.present? %>
-  <h1>Current weather by city</h1>
-  <pre><%= @by_city %></pre>
-<% end %>
-
