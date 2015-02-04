@@ -1,5 +1,7 @@
 class LocationsController < ApplicationController
 
+  before_action :current_weather, only: [:show]
+
   def index
     @locations = Location.all
   end
@@ -43,6 +45,16 @@ class LocationsController < ApplicationController
     end
   end
 
+  def sync
+    @location = Location.find(params["id"])
+    unless @location.last_sync_at == DateTime.now
+      @location.update_attribute(:last_sync_at, DateTime.now)
+      @location.update_attribute(:forecast, GetWeather.by_coordinates(@location.lat, @location.lng))
+    end
+    flash[:notice] = "Sync done!"
+    redirect_to action: "index"
+  end
+
   private
 
   def location_params
@@ -56,6 +68,13 @@ class LocationsController < ApplicationController
     else
       GoogleGeocoding.get_address(params["location"]["lat"], params["location"]["lng"])
     end
-  end    
+  end  
 
+  def current_weather
+    location = Location.find(params["id"])
+    unless location.last_sync_at == Time.now
+      location.update_attribute(:last_sync_at, Time.now)
+      location.update_attribute(:forecast, GetWeather.by_coordinates(location.lat, location.lng))
+    end
+  end
 end

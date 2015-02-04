@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   post 'weather/current', :to => 'weather#current'
 
 
-  resources :locations
+  resources :locations do 
+     member do
+      get :sync
+    end
+  end
 
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
